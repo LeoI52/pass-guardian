@@ -152,9 +152,10 @@ class App(ctk.CTk):
         return Fernet(key)
 
     def close(self):
-        f = open("./save/save.json", "w")
-        json.dump(self.data, f, indent=2)
-        f.close()
+        if self.data != {}:
+            f = open("./save/save.json", "w")
+            json.dump(self.data, f, indent=2)
+            f.close()
         self.destroy()
 
     def cap_entry(self, widget, lenght:int):
